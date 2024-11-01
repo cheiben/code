@@ -1,3 +1,6 @@
+
+//main.tf
+
 locals {
   table_name     = "mail-checker-messages"
   gsi_uuid_index = "uuid_index"
@@ -153,4 +156,47 @@ resource "aws_appautoscaling_policy" "gsi_write_policy" {
 
     target_value = var.target_write_value
   }
+}
+
+
+// Variables.tf
+
+variable "max_read_capacity" {
+  description = "Maximum read capacity for DynamoDB scaling"
+  type        = number
+}
+
+variable "min_read_capacity" {
+  description = "Minimum read capacity for DynamoDB scaling"
+  type        = number
+}
+
+variable "target_read_value" {
+  description = "Target value for DynamoDB read scaling policy"
+  type        = number
+}
+
+variable "max_write_capacity" {
+  description = "Maximum write capacity for DynamoDB scaling"
+  type        = number
+}
+
+variable "min_write_capacity" {
+  description = "Minimum write capacity for DynamoDB scaling"
+  type        = number
+}
+
+variable "target_write_value" {
+  description = "Target value for DynamoDB write scaling policy"
+  type        = number
+}
+
+variable "scale_in_cooldown" {
+  description = "Cooldown period for scale-in activity"
+  type        = number
+}
+
+variable "scale_out_cooldown" {
+  description = "Cooldown period for scale-out activity"
+  type        = number
 }
