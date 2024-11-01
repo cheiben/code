@@ -2,7 +2,7 @@
 //main.tf
 
 locals {
-  table_name     = "mail-checker-messages"
+  table_name     = "YOUR_table_Name"
   gsi_uuid_index = "uuid_index"
 }
 
@@ -157,10 +157,8 @@ resource "aws_appautoscaling_policy" "gsi_write_policy" {
     target_value = var.target_write_value
   }
 }
-
-
-// Variables.tf
-
+//tf.variables
+  
 variable "max_read_capacity" {
   description = "Maximum read capacity for DynamoDB scaling"
   type        = number
