@@ -1,5 +1,5 @@
 locals {
-  table_name     = "mail-checker-messages"
+  table_name     = "YOUR_table_Name"
   gsi_uuid_index = "uuid_index"
 }
 
