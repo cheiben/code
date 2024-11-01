@@ -61,7 +61,7 @@ resource "aws_cloudwatch_metric_alarm" "high_read_capacity_utilization" {
   threshold           = 80
   alarm_description   = "Alarm when DynamoDB read capacity utilization exceeds 80% in ${local.environment}"
   dimensions = {
-    TableName = "mail-checker-messages"
+    TableName = "YOUR TABLE NAME "
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
@@ -77,7 +77,7 @@ resource "aws_cloudwatch_metric_alarm" "high_write_capacity_utilization" {
   threshold           = 80
   alarm_description   = "Alarm when DynamoDB write capacity utilization exceeds 80% in ${local.environment}"
   dimensions = {
-    TableName = "mail-checker-messages"
+    TableName = "YOUR TABLE NAME"
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
@@ -93,7 +93,7 @@ resource "aws_cloudwatch_metric_alarm" "dynamodb_throttled_requests" {
   threshold           = 1
   alarm_description   = "Alarm when there is at least 1 throttled request in DynamoDB for ${local.environment}"
   dimensions = {
-    TableName = "mail-checker-messages"
+    TableName = "YOUR TABLE NAME"
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
@@ -111,7 +111,7 @@ resource "aws_cloudwatch_metric_alarm" "gsi_high_read_capacity_utilization" {
   threshold           = 80
   alarm_description   = "Alarm when GSI read capacity utilization exceeds 80% in ${local.environment}"
   dimensions = {
-    IndexName = "uuid_index"
+    IndexName = "YOUR SECONDARY_GLOBAL_INDEX"
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
@@ -127,7 +127,7 @@ resource "aws_cloudwatch_metric_alarm" "gsi_high_write_capacity_utilization" {
   threshold           = 80
   alarm_description   = "Alarm when GSI write capacity utilization exceeds 80% in ${local.environment}"
   dimensions = {
-    IndexName = "uuid_index"
+    IndexName = "YOUR SECONDARY_GLOBAL_INDEX"
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
@@ -143,7 +143,7 @@ resource "aws_cloudwatch_metric_alarm" "gsi_throttled_requests" {
   threshold           = 1
   alarm_description   = "Alarm when there is at least 1 throttled request in GSI for ${local.environment}"
   dimensions = {
-    IndexName = "uuid_index"
+    IndexName = "YOUR SECONDARY_GLOBAL_INDEX"
   }
   alarm_actions = [aws_sns_topic.alarm_notifications.arn]
 }
