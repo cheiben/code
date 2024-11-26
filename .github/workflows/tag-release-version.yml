@@ -8,7 +8,7 @@ jobs:
     name: Create Tag Version
     runs-on: ubuntu-latest
     outputs:
-      branchName: ${{ steps.gitversion.outputs.branchName }}
+      branchName: ${{ steps.set-branch-name.outputs.branchName }}
     steps:
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
@@ -27,6 +27,10 @@ jobs:
     - name: Display GitVersion outputs
       run: |
         echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"
+    - name: Save branch name to output
+      id: set-branch-name
+      run: |
+        echo "branchName=${{ steps.gitversion.outputs.branchName }}" >> $GITHUB_OUTPUT
     - name: Create tag
       uses: actions/github-script@v3
       with:
